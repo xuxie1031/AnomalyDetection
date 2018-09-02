@@ -43,7 +43,7 @@ def psi_with_fixed_horizon_greedy(goal_coords, vessels_coords, vessels_speeds, a
             max_step_psi = np.zeros(attract_flags.shape)
             latent_id = -1
             for idx in range(len(attract_latent_flags)):
-                new_latent_flags = attract_latent_flags
+                new_latent_flags = np.copy(attract_latent_flags)
                 new_latent_flags[idx] = 1.0
                 tmp_psi = step_psi_with_selected_latent(attract_force_magnitudes, attract_force_dirs, vessel_speed, new_latent_flags)
                 if attract_omega.dot(tmp_psi) > max_step_log_posterior:
